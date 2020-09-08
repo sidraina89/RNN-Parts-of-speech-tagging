@@ -2,3 +2,4 @@ Peace at home, peace on earth.
 He is trying to fish for fish in the lake.
 She sells sea shells on the sea shore.
 A quick brown fox jumped over the lazy dog.
+Train, dev and test set are mutually exclusive and POS token distribution is similar among the data sets.

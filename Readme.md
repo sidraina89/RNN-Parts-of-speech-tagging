@@ -23,6 +23,24 @@ We will use the part-of-speech tags used in the Universal Dependencies Project:
 |X|other|
 
 --------------------------------
+##### How to use:
+This module requires python3 and the dependency packages are listed down in ```requirements.txt```
+Please follow these steps:
+1. Setup a virtual environment using ```virtualenv``` (If not installed: ```pip3 install virtualenv```):
+    ```virtualenv -p python3 pos-tagger```
+2. After the venv is created, activate the virtual environment:
+    ```source pos-tagger/bin/activate```
+3. The dependencies can be downloaded by running ```pip3 install -r requirements.txt```
+
+After downloading dependencies:
+1. Train the model by executing ```train.py``` and pass the train and dev file paths as arguments. e.g.:
+    ```python3 train.py data/en_gum-ud-train.conllu data/en_gum-ud-dev.conllu```
+2. Evaluate on test data by executing ```eval.py``` and passing the test set file path as an argument. e.g.:
+    ```python3 eval.py data/en_gum-ud-test.conllu```
+3. Generate POS tokens for unlabeled text file by executing ```generate.py``` and passing the unlabeled text file path as an argument. e.g.:
+    ```python3 generate.py unlabelled_text.txt```
+
+
 #### Assumptions Made:
 1. Train, dev and test set are mutually exclusive and POS token distribution is similar among the data sets.
 2. Model accuracy is measured per token i.e. *sum(No. of POS tokens correctly predicted)/Total POS Tokens in document*
@@ -56,7 +74,7 @@ This custom accuracy metric is defined as the ```ignore_pad_accuracy``` function
 
 ### Results:
 
-Accuracy on Dev set of tokens is 90.31% (custom accuracy metric)
+Accuracy on test set of tokens is apx. 89% (custom accuracy metric)
 
 Classification Report from the dev data set for every POS tag:
 
@@ -81,21 +99,4 @@ Classification Report from the dev data set for every POS tag:
 |INTJ|1.00|0.63|0.77|19|
 
 ##### Time Spent: 
-14-18 hrs (apx)
-
-##### How to use:
-This module requires python3 and the dependency packages are listed down in ```requirements.txt```
-Please follow these steps:
-1. Setup a virtual environment using ```virtualenv``` (If not installed: ```pip3 install virtualenv```):
-    ```virtualenv -p python3 pos-tagger```
-2. After the venv is created, activate the virtual environment:
-    ```source pos-tagger/bin/activate```
-3. The dependencies can be downloaded by running ```pip3 install -r requirements.txt```
-
-After downloading dependencies:
-1. Train the model by executing ```train.py``` and pass the train and dev file paths as arguments. e.g.:
-    ```python3 train.py data/en_gum-ud-train.conllu data/en_gum-ud-dev.conllu```
-2. Evaluate on test data by executing ```eval.py``` and passing the test set file path as an argument. e.g.:
-    ```python3 evaluate.py data/en_gum-ud-test.conllu```
-3. Generate POS tokens for unlabeled text file by executing ```generate.py``` and passing the unlabeled text file path as an argument. e.g.:
-    ```python3 generate.py unlabelled_text.txt```
+20 hrs (apx)
