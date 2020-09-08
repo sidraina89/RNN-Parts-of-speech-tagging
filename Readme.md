@@ -82,3 +82,14 @@ Classification Report from the dev data set for every POS tag:
 
 ##### Time Spent: 
 14-18 hrs (apx)
+
+##### How to use:
+This module requires python3 and the dependency packages are listed down in ```requirements.txt```
+The dependencies can be downloaded by running ```pip3 install -r requirements.txt```
+After downloading dependencies:
+1. Train the model by executing ```train.py``` and pass the train and dev file paths as arguments. e.g.:
+    ```python3 train.py data/en_gum-ud-train.conllu data/en_gum-ud-dev.conllu```
+2. Evaluate on test data by executing ```eval.py``` and passing the test set file path as an argument. e.g.:
+    ```python3 evaluate.py data/en_gum-ud-test.conllu```
+3. Generate POS tokens for unlabeled text file by executing ```generate.py``` and passing the unlabeled text file path as an argument. e.g.:
+    ```python3 generate.py unlabelled_text.txt```
