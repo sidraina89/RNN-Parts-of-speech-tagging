@@ -76,7 +76,7 @@ if __name__ == "__main__":
         train_sentences_X,dev_sentences_X,train_tags_y,dev_tags_y = pad_sequence_list([train_sentences_X,dev_sentences_X,train_tags_y,dev_tags_y],MAX_LENGTH)
         embedding_dim = 300
         embedding_matrix = calculate_embeddings.calculate_embeddings(train_vocab_words,embedding_dim)
-        pos = POSTagger.POSTagger(embedding_dim,train_vocab_words,train_vocab_y,embedding_matrix,MAX_LENGTH)
+        pos = POSTagger.POSTagger(embedding_dim,train_vocab_words,embedding_matrix,train_vocab_y,MAX_LENGTH)
         pos_model = pos.train_model(train_sentences_X,train_tags_y,dev_sentences_X,dev_tags_y,50)
         pos.show_metrics(dev_sentences_X,dev_tags_y)
         # Save model
@@ -85,8 +85,6 @@ if __name__ == "__main__":
         joblib.dump(train_vocab_y,"vocab/tag_to_idx")
         joblib.dump(MAX_LENGTH,"vocab/Train_max_len")
         print("Training vocabulary saved at - vocab/word_to_idx")
-
-
     else:
         print("Info: The script assumes 2 arguments for file paths for the train and dev files. Please run as follows:\n python3 train.py [train file path] [dev file path]!")
 
