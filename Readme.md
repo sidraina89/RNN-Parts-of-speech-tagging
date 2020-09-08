@@ -85,7 +85,13 @@ Classification Report from the dev data set for every POS tag:
 
 ##### How to use:
 This module requires python3 and the dependency packages are listed down in ```requirements.txt```
-The dependencies can be downloaded by running ```pip3 install -r requirements.txt```
+Please follow these steps:
+1. Setup a virtual environment using ```virtualenv``` (If not installed: ```pip3 install virtualenv```):
+    ```virtualenv -p python3 pos-tagger```
+2. After the venv is created, activate the virtual environment:
+    ```source pos-tagger/bin/activate```
+3. The dependencies can be downloaded by running ```pip3 install -r requirements.txt```
+
 After downloading dependencies:
 1. Train the model by executing ```train.py``` and pass the train and dev file paths as arguments. e.g.:
     ```python3 train.py data/en_gum-ud-train.conllu data/en_gum-ud-dev.conllu```

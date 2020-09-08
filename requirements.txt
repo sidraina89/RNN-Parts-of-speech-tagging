@@ -1,5 +1,6 @@
 conllu
-tensorflow
 pandas
 numpy
 scikit-learn
+tensorflow
+

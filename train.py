@@ -1,6 +1,7 @@
 import dataload, calculate_embeddings
 import sys
 import POSTagger
+import conllu
 #import sklearn.externals.joblib
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import joblib
@@ -75,8 +76,8 @@ if __name__ == "__main__":
         # Padding all sequences to make them equal - Both words and Tags
         train_sentences_X,dev_sentences_X,train_tags_y,dev_tags_y = pad_sequence_list([train_sentences_X,dev_sentences_X,train_tags_y,dev_tags_y],MAX_LENGTH)
         embedding_dim = 300
-        embedding_matrix = calculate_embeddings.calculate_embeddings(train_vocab_words,embedding_dim)
-        pos = POSTagger.POSTagger(embedding_dim,train_vocab_words,embedding_matrix,train_vocab_y,MAX_LENGTH)
+        #embedding_matrix = calculate_embeddings.calculate_embeddings(train_vocab_words,embedding_dim)
+        pos = POSTagger.POSTagger(embedding_dim,train_vocab_words,train_vocab_y,MAX_LENGTH)
         pos_model = pos.train_model(train_sentences_X,train_tags_y,dev_sentences_X,dev_tags_y,50)
         pos.show_metrics(dev_sentences_X,dev_tags_y)
         # Save model

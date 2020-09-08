@@ -19,7 +19,7 @@ class POSTagger:
             return accuracy
         return custom_accuracy
 
-    def __init__(self,embedding_dim,wordset,embedding_matrix,tagset,max_length):
+    def __init__(self,embedding_dim,wordset,tagset,max_length):
         super(POSTagger,self).__init__()
 
         self.embedding_dim = embedding_dim
@@ -27,13 +27,13 @@ class POSTagger:
         self.wordset = wordset
         self.tagset = tagset
         self.MAX_LENGTH = max_length
-        self.embedding_matrix = embedding_matrix
+        #self.embedding_matrix = embedding_matrix
         # Define network Architecture
         print("Defining Model Architecture")
         self.model = Sequential()
         self.model.add(InputLayer(input_shape=(self.MAX_LENGTH, )))
-        #self.model.add(Embedding(len(self.wordset)+1,128))
-        self.model.add(Embedding(len(self.wordset)+1, self.embedding_dim,input_length=self.MAX_LENGTH ,weights=[self.embedding_matrix],trainable=False))
+        self.model.add(Embedding(len(self.wordset)+1,128))
+        #self.model.add(Embedding(len(self.wordset)+1, self.embedding_dim,input_length=self.MAX_LENGTH ,weights=[self.embedding_matrix],trainable=False))
         self.model.add(Dropout(0.10))
         self.model.add(Bidirectional(GRU(256, return_sequences=True)))
         #self.model.add(Dropout(0.15))
@@ -59,7 +59,7 @@ class POSTagger:
         early_stop = tf.keras.callbacks.EarlyStopping(monitor='val_custom_accuracy', patience=3)
         self.model.fit(train_sentences_X,
             self.to_categorical(train_tags_y, len(self.tagset)),
-            batch_size=128,
+            batch_size=99,
             epochs=num_epochs,
             validation_data=(dev_sentences_X,self.to_categorical(dev_tags_y,len(self.tagset))),
             callbacks = [early_stop]
