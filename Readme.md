@@ -1,4 +1,4 @@
-# POS Tagging ML Model
+# POS Tagging Machine Learning Model
 This work is to develop a part-of-speech(POS) tagger based on a Bi-directional RNN (GRU cell) Model trained on the Georgetown University Multilayer(GUM) Corpus.
 Link to data: (https://github.com/UniversalDependencies/UD_English-GUM/tree/master).
 ### POS Tag Sets
@@ -51,7 +51,7 @@ As I assumed POS Tagging to be a sequence modeling task, I chose to use a Bidire
 
 #### Testing Strategy:
 The model has been trained on the training set from the GUM corpus and tuned for accuracy on the dev set from GUM.
-As a Bidirectional LTSM takes in input sequences of the same length, the documents in the data sets were post padded with a custom token "-PAD-" to make them equal in length.
+As a Bidirectional LSTM takes in input sequences of the same length, the documents in the data sets were post padded with a custom token "-PAD-" to make them equal in length.
 e.g.
 
 ##### Tokens before padding:
