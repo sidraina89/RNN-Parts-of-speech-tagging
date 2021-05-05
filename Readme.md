@@ -97,6 +97,3 @@ Classification Report from the dev data set for every POS tag:
 |SYM|1.00|0.90|0.95|10|
 |PART|0.95|0.92|0.94|371|
 |INTJ|1.00|0.63|0.77|19|
-
-##### Time Spent: 
-20 hrs (apx)
